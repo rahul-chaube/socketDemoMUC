@@ -15,6 +15,7 @@
         android:layout_marginTop="104dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
+        android:text="http://192.168.2.179"
         android:hint="Enter Server Address"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,6 +24,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
+        android:text="3000"
         android:id="@+id/editTextPortNumber"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
