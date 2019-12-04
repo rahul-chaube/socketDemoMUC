@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else
         {
-            Intent intent=new Intent(MainActivity.this,SocketConnection.class);
+            Intent intent=new Intent(MainActivity.this,WebSocket.class);
             intent.putExtra(ADDRESS,editTextAddress.getText().toString().trim());
             intent.putExtra(PORT,editTextPort.getText().toString());
             startActivity(intent);

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -42,6 +43,11 @@ public class SocketConnection extends AppCompatActivity {
             textViewCompletePath.setText(path);
             socket=IO.socket(path);
             socket.connect();
+            
+            if(socket.connected())
+            {
+                Toast.makeText(this, "Connected ", Toast.LENGTH_SHORT).show();
+            }
             socket.emit("join", Build.MANUFACTURER +"  "+Build.MODEL);
             socket.on("newJoin", new Emitter.Listener() {
                 @Override
@@ -64,10 +70,12 @@ public class SocketConnection extends AppCompatActivity {
                 }
             });
 
-        } catch (URISyntaxException e) {
+        } catch (Exception e) {
+            Toast.makeText(this, "Failed to connect "+e.getMessage(), Toast.LENGTH_SHORT).show();
             Log.e("Socket Conn Error ",e.getMessage());
             e.printStackTrace();
         }
+
 
     }
 
