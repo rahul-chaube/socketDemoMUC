@@ -1,8 +1,10 @@
 package com.rahul.socketmucdemo;
 
 import android.content.Intent;
+import android.net.wifi.WifiManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.format.Formatter;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -18,6 +20,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         editTextAddress=findViewById(R.id.txtAddress);
         editTextPort=findViewById(R.id.editTextPortNumber);
+        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+        String ipAddress = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+        editTextAddress.setText(ipAddress);
 
     }
 
